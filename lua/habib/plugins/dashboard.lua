@@ -44,8 +44,10 @@ return {
 			-- wrap = "overflow";
 		}
 
+		local actual_date = os.date("%A, %d %B %Y")
+
 		local function footer()
-			return "Programming is an art of patience not talent"
+			return actual_date
 		end
 
 		dashboard.section.footer.val = footer()

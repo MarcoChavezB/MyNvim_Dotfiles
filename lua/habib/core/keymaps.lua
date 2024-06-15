@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 
 -- Alias for setting keymaps
 local map = vim.api.nvim_set_keymap
+local default_opts = { noremap = true, silent = true }
 
 -- Keybindings
 
@@ -81,3 +82,19 @@ map(
 -- Preview definition
 map("n", "<Esc>", '<cmd>lua require("goto-preview").close_all_win()<CR>', { noremap = true, silent = true }) -- Close all previews
 map("n", "C-S-CR", "<cmd>Telescope lsp_references<CR>", { noremap = true, silent = true }) -- List references
+
+-- Delete workspace
+map("n", "<C-x>", "dd", { noremap = true, silent = true })
+map("n", "<C-BS>", "db", { noremap = true, silent = true })
+
+-- text select
+map("n", "<C-S-Right>", "ve", { noremap = true, silent = true })
+map("n", "<C-S-Left>", "vb", { noremap = true, silent = true })
+map("n", "<C-S-Up>", "vk", { noremap = true, silent = true })
+map("n", "<C-S-Down>", "vj", { noremap = true, silent = true })
+
+-- text deleted
+map("v", "<C-x>", '"+d', default_opts)
+
+-- text Copy
+map("v", "<C-c>", '"+y', default_opts)

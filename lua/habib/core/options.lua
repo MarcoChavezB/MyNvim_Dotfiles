@@ -8,10 +8,10 @@ vim.o.conceallevel = 0 -- For markdown like elements
 vim.o.fileencoding = "utf-8" -- File Encoding
 vim.g.loaded_netrw = 1 -- Helps opening links in the internet (probabilly -_-)
 vim.g.loaded_netrwPlugin = 1
-vim.opt.autochdir = true
+vim.opt.autochdir = false
 vim.cmd("filetype plugin indent on")
 vim.o.shortmess = vim.o.shortmess .. "c"
-vim.o.hidden = true
+vim.o.hidden = false
 vim.o.whichwrap = "b,s,<,>,[,],h,l"
 vim.opt.iskeyword:append("-,_")
 vim.opt.virtualedit = "block"
