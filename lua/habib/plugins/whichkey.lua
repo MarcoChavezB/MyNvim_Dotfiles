@@ -20,12 +20,12 @@ return {
 		local terminal = require("toggleterm.terminal").Terminal
 
 		local toggle_float = function()
-			local float = terminal:new({ direction = "float" })
+			local float = terminal:new({ direction = "vertical" })
 			return float:toggle()
 		end
 
 		local toggle_lazygit = function()
-			local lazygit = terminal:new({ cmd = "lazygit", direction = "float" })
+			local lazygit = terminal:new({ cmd = "lazygit", direction = "vertical" })
 			return lazygit:toggle()
 		end
 

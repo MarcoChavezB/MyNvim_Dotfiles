@@ -63,6 +63,7 @@ return {
 				{ "clangd" },
 				{ "clang-format" },
 				{ "sqls" },
+        {"angular-language-server"}
 			},
 
 			auto_update = true,

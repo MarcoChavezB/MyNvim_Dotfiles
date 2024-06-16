@@ -50,6 +50,8 @@ map(
 ) -- Find files
 map("n", "<C-'>", ":Telescope live_grep<cr>", { noremap = true, silent = true }) -- Live grep
 map("n", "<C-¡>", ":Telescope current_buffer_fuzzy_find<cr>", { noremap = true, silent = true }) -- Fuzzy find in buffer
+map("n", "<C-p>", ":Telescope buffers<CR>", { noremap = true, silent = true })
+map("n", "<C-S-p>", ":Bonly<CR>", { noremap = true, silent = true })
 
 -- Text selection
 map("n", "<C>s", "v$", { noremap = true, silent = true }) -- Select to end of line
@@ -87,14 +89,31 @@ map("n", "C-S-CR", "<cmd>Telescope lsp_references<CR>", { noremap = true, silent
 map("n", "<C-x>", "dd", { noremap = true, silent = true })
 map("n", "<C-BS>", "db", { noremap = true, silent = true })
 
+
 -- text select
 map("n", "<C-S-Right>", "ve", { noremap = true, silent = true })
 map("n", "<C-S-Left>", "vb", { noremap = true, silent = true })
 map("n", "<C-S-Up>", "vk", { noremap = true, silent = true })
 map("n", "<C-S-Down>", "vj", { noremap = true, silent = true })
 
+
 -- text deleted
 map("v", "<C-x>", '"+d', default_opts)
 
 -- text Copy
 map("v", "<C-c>", '"+y', default_opts)
+map("n", "<C-Del>", "dd", default_opts)
+map('n', '<C-a>', 'ggVG', default_opts)
+
+
+
+-- Movimientos entre ventanas divididas
+map("n", "<C-w><Right>", "<C-w>l", { noremap = true, silent = true }) -- Mover a la ventana derecha
+map("n", "<C-w><Down>", "<C-w>j", { noremap = true, silent = true }) -- Mover a la ventana inferior
+map("n", "<C-w><Up>", "<C-w>k", { noremap = true, silent = true }) -- Mover a la ventana superior
+map("n", "<C-w><Left>", "<C-w>h", { noremap = true, silent = true }) -- Mover a la ventana izquierda
+
+-- Mover la selección hacia abajo
+map("v", "S", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+-- Mover la selección hacia arriba
+map("v", "W", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
