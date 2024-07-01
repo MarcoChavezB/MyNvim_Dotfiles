@@ -45,8 +45,8 @@ vim.o.mouse = "a"
 
 -- Wrapping
 vim.wo.wrap = false
-vim.wo.number = false
-vim.wo.relativenumber = false
+vim.wo.number = true
+vim.wo.relativenumber = true
 vim.o.cursorline = true
 vim.o.cursorcolumn = false
 vim.wo.signcolumn = "yes"
@@ -55,7 +55,9 @@ vim.wo.signcolumn = "yes"
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
 
-vim.o.showtabline = 2
+vim.o.showtabline = 0
+vim.o.laststatus = 0
+
 
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2

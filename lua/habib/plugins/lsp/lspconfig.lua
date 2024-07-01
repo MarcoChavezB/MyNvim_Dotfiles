@@ -17,7 +17,7 @@ return {
 		end
 
 		-- Auto Formatting
-		--	vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
+		--		vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
 		--LspInfo Borders
 		lspui.default_options.border = "double"
@@ -74,25 +74,23 @@ return {
 			},
 		})
 
-
     -- Angular LS
-    lspconfig.angularls.setup {
+lspconfig.angularls.setup({
     cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" },
     on_new_config = function(new_config)
         new_config.cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" }
     end,
     filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
-    root_dir = function(fname)
-        return lspconfig.util.root_pattern('angular.json')(fname) or lspconfig.util.root_pattern('.git')(fname)
-    end,
-    on_attach = function(client)
-        -- Deshabilitar tsserver para archivos Angular, para evitar conflictos
-        if client.resolved_capabilities.document_formatting then
-            client.resolved_capabilities.document_formatting = false
+    root_dir = lspconfig.util.root_pattern("angular.json", ".git"),
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        if client.server_capabilities then
+            client.server_capabilities.document_formatting = false
+        else
+            print("Advertencia: Las capacidades del cliente LSP no están disponibles.")
         end
-    end
-}
-
+    end,
+})
 		-- CSS LS
 		lspconfig.cssls.setup({
 			capabilities = capabilities,

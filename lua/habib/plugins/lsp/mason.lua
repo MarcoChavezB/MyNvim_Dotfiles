@@ -31,7 +31,8 @@ return {
 				"lua_ls",
 				"cssls",
 				"marksman",
-				"tsserver", -- Añadir tsserver aquí
+				"tsserver",
+        "angularls",
 			},
 			automatic_installation = true,
 		})
@@ -63,7 +64,6 @@ return {
 				{ "clangd" },
 				{ "clang-format" },
 				{ "sqls" },
-        {"angular-language-server"}
 			},
 
 			auto_update = true,

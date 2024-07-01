@@ -3,7 +3,7 @@ return {
 	config = function()
 		require("goto-preview").setup({
 			width = 120, -- Ancho de la ventana flotante
-			height = 25, -- Alto de la ventana flotante
+			height = 20, -- Alto de la ventana flotante
 			border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Estilo del borde
 			default_mappings = false, -- Deshabilitar mapeos predeterminados si quieres definir los tuyos
 			debug = false, -- Habilitar modo de depuración
