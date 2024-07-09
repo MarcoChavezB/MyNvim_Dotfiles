@@ -34,7 +34,8 @@ return {
       vim.cmd([[hi SignColumn guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi VertSplit guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi StatusLineNC guibg=NONE ctermbg=NONE]])
+
     end,
-  },
+  }
 }
 

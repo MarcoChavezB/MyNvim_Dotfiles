@@ -1,2 +1,31 @@
-mariadb://AviaFlyDev:f%23bEq.O%24QO%3F%5E@208.109.24.33:3306/AVIADevelop
+		dashboard.section.header.val = {
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                     ]],
+			[[       ████ ██████           █████      ██                     ]],
+			[[      ███████████             █████                             ]],
+			[[      █████████ ███████████████████ ███   ███████████   ]],
+			[[     █████████  ███    █████████████ █████ ██████████████   ]],
+			[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+			[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+			[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+		}
+
+		--dashboard.section.buttons.val = {
+		--	dashboard.button("e", "New file", "<cmd>ene <CR>"),
+		--	dashboard.button("SPC s f", "Find file"),
+		--	dashboard.button("SPC s o", "Recently opened files"),
+		--	dashboard.button("SPC s r", "Resume Telescope"),
+		--	dashboard.button("SPC s g", "Find word"),
+		--	dashboard.button("SPC s b", "Open buffers"),
+		--}
+
 
