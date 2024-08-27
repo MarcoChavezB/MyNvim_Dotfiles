@@ -11,6 +11,7 @@ return {
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+      local builtin = require("telescope.builtin")
 
       telescope.setup({
         defaults = {
@@ -78,6 +79,13 @@ return {
       vim.cmd([[hi TelescopeResultsBorder guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi TelescopePreviewNormal guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi TelescopePreviewBorder guibg=NONE ctermbg=NONE]])
+
+      _G.find_files_in_current_directory = function()
+        local cwd = vim.fn.expand('%:p:h')  
+        builtin.find_files({ cwd = cwd })
+      end
+
+      vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua find_files_in_current_directory()<CR>", { noremap = true, silent = true })
     end,
   },
 

@@ -23,7 +23,7 @@ ls.add_snippets("all", {
   }),
 })
 
--- Snippet para un comentario
+
 ls.add_snippets("all", {
     s("comment", {
         t({"/*", " * "}),
@@ -49,6 +49,12 @@ ls.add_snippets("all", {
 ls.add_snippets("all", {
   s("bol", {
     t(": boolean = false"),
+  }),
+})
+
+ls.add_snippets("all", {
+  s("resp", {
+    t("return response()->json()"),
   }),
 })
 

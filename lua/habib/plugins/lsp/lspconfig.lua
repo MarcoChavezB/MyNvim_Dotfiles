@@ -36,7 +36,7 @@ return {
 		-- rust_analyzer
 		lspconfig.rust_analyzer.setup({
 			capabilities = capabilities,
-			-- Server-specific settings. See `:help lspconfig-setup`
+			-- Server-specific settings. See :help lspconfig-setup
 			settings = {
 				["rust-analyzer"] = {},
 			},
@@ -75,22 +75,23 @@ return {
 		})
 
     -- Angular LS
-lspconfig.angularls.setup({
-    cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" },
-    on_new_config = function(new_config)
-        new_config.cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" }
-    end,
-    filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
-    root_dir = lspconfig.util.root_pattern("angular.json", ".git"),
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        if client.server_capabilities then
-            client.server_capabilities.document_formatting = false
-        else
-            print("Advertencia: Las capacidades del cliente LSP no están disponibles.")
-        end
-    end,
-})
+    lspconfig.angularls.setup({
+        cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" },
+        on_new_config = function(new_config)
+            new_config.cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" }
+        end,
+        filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+        root_dir = lspconfig.util.root_pattern("angular.json", ".git"),
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+            if client.server_capabilities then
+                client.server_capabilities.document_formatting = false
+            else
+                print("Advertencia: Las capacidades del cliente LSP no están disponibles.")
+            end
+        end,
+    })
+
 		-- CSS LS
 		lspconfig.cssls.setup({
 			capabilities = capabilities,
@@ -102,5 +103,8 @@ lspconfig.angularls.setup({
 		lspconfig.tailwindcss.setup({
 			capabilities = capabilities,
 		})
+
+
 	end,
 }
+

@@ -16,7 +16,9 @@ return {
 			focus_on_open = true, -- Enfocar la ventana flotante cuando se abre
 			dismiss_on_move = false, -- Cerrar la ventana flotante cuando te mueves fuera de ella
 			force_close = true, -- Forzar el cierre de la ventana flotante si está abierta
-			bufhidden = "wipe", -- Opción bufhidden de la ventana flotante
+			bufhidden = "wipe", 
 		})
 	end,
 }
+
+

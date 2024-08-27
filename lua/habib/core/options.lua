@@ -57,6 +57,7 @@ vim.bo.tabstop = 2
 
 vim.o.showtabline = 0
 vim.o.laststatus = 0
+vim.opt.swapfile = false
 
 
 vim.o.softtabstop = 2
