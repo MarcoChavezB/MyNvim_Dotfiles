@@ -117,3 +117,7 @@ map('n', '<A-CR>', ':vsplit<CR>:wincmd L<CR>', { noremap = true, silent = true }
 
 -- return to last change
 map('n', '<A-º>', '<C-o>', { noremap = true, silent = true })
+
+
+-- Abre el compilador con Ctrl + 1
+vim.api.nvim_set_keymap('n', '<C-1>', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })

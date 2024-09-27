@@ -29,7 +29,7 @@ return {
 		})
 
 		-- tsserver
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 		})
 
@@ -55,6 +55,23 @@ return {
 		lspconfig.html.setup({
 			capabilities = capabilities,
 		})
+
+    -- C++ lsp
+    lspconfig.clangd.setup({
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",  -- Mantener esta línea
+        "--background-index",        -- Habilita indexación en segundo plano
+        "--clang-tidy",              -- Habilita clang-tidy para diagnósticos adicionales
+        "--completion-style=detailed", -- Ofrece detalles adicionales en autocompletado
+        "--header-insertion=iwyu",   -- Inserción automática de cabeceras (Incluir lo que se usa)
+        "--cross-file-rename",       -- Soporte para renombrar entre archivos
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp" },
+      root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    })
+    vim.cmd([[autocmd BufWritePre *.cpp,*.h lua vim.lsp.buf.format()]])
 
 		-- configure emmet language server
 		lspconfig.emmet_ls.setup({
