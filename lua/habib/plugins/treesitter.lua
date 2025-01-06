@@ -8,6 +8,7 @@ return {
 		"windwp/nvim-autopairs",
 	},
 
+
 	build = ":TSUpdate",
 	event = "bufWinEnter",
 
@@ -26,6 +27,7 @@ return {
 				"typescript",
 				"python",
 				"markdown",
+        "kotlin"
 			},
 			sync_install = false,
 			auto_install = true,

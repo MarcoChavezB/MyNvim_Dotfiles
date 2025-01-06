@@ -16,6 +16,36 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+
+    -- Flutter
+    lspconfig.dartls.setup({
+      on_attach = function(client, bufnr)
+        -- Aquí puedes agregar configuraciones adicionales al LSP si es necesario
+      end,
+      capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    })
+
+
+
+   lspconfig.astro.setup({
+      capabilities = capabilities,
+      filetypes = { "astro" },
+      root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+    })
+
+    -- Kotlin Language Server
+    require'lspconfig'.kotlin_language_server.setup{
+      cmd = { "kotlin-language-server" },
+      filetypes = { "kotlin" },
+      root_dir = require'lspconfig'.util.root_pattern("build.gradle", "settings.gradle", ".git"),
+      settings = {
+        kotlin = {
+          compiler = {
+            arguments = { "-Xjsr305=strict" }
+          }
+        }
+      }
+    }
 		-- Auto Formatting
 		--		vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
@@ -29,10 +59,9 @@ return {
 		})
 
 		-- tsserver
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 		})
-
 		-- rust_analyzer
 		lspconfig.rust_analyzer.setup({
 			capabilities = capabilities,
@@ -55,6 +84,23 @@ return {
 		lspconfig.html.setup({
 			capabilities = capabilities,
 		})
+
+    -- C++ lsp
+    lspconfig.clangd.setup({
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",  -- Mantener esta línea
+        "--background-index",        -- Habilita indexación en segundo plano
+        "--clang-tidy",              -- Habilita clang-tidy para diagnósticos adicionales
+        "--completion-style=detailed", -- Ofrece detalles adicionales en autocompletado
+        "--header-insertion=iwyu",   -- Inserción automática de cabeceras (Incluir lo que se usa)
+        "--cross-file-rename",       -- Soporte para renombrar entre archivos
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp" },
+      root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    })
+    vim.cmd([[autocmd BufWritePre *.cpp,*.h lua vim.lsp.buf.format()]])
 
 		-- configure emmet language server
 		lspconfig.emmet_ls.setup({

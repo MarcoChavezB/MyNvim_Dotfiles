@@ -1,3 +1,4 @@
+
 local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
@@ -8,15 +9,13 @@ local ht = "html"
 local cs = "css"
 local ph = "php"
 
-
 ls.add_snippets("all", {
     s("test", {
         t("Hello, this is a test snippet"),
     }),
 })
-
 ls.add_snippets("all", {
-  s("log", {
+  s("co", {
     t("console.log("),
     i(1),
     t(");"),
@@ -54,8 +53,7 @@ ls.add_snippets("all", {
 
 ls.add_snippets("all", {
   s("resp", {
-    t("return response()->json()"),
+    t("return response()->json();"),
   }),
 })
-
 

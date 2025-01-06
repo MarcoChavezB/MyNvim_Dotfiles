@@ -44,11 +44,12 @@ return {
 			}), -- end of mapping section
 
 			-- Managing Sources for completions
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- For luasnip users.
-				{ name = "buffer" },
-			}),
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },   -- Habilitar completado por LSP
+      { name = "luasnip" },     -- Habilitar los snippets de luasnip
+      { name = "buffer" },      -- Completado basado en el contenido del buffer
+      { name = "path" },        -- Completado basado en rutas de archivos
+    }),
 
 			formatting = {
 				format = lspkind.cmp_format({ with_text = true, maxwidth = 50 }),

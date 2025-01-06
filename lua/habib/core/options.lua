@@ -74,6 +74,10 @@ vim.opt.list = false
 vim.opt.listchars:append("eol:󱞣")
 vim.opt.fillchars = { eob = " " }
 
+-- Lualine
+vim.o.laststatus = 3
+
+
 -- keep cursor unchanged after quiting
 vim.api.nvim_create_autocmd("ExitPre", {
 	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
@@ -90,3 +94,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.linebreak = true
 	end,
 })
+
+if vim.fn.has("nvim-0.8") == 1 then
+	vim.opt.cmdheight = 0
+end

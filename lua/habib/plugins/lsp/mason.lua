@@ -31,8 +31,9 @@ return {
 				"lua_ls",
 				"cssls",
 				"marksman",
-				"tsserver",
+				"ts_ls",
         "angularls",
+        "dartls"
 			},
 			automatic_installation = true,
 		})
@@ -76,7 +77,7 @@ return {
 			"lua_ls",
 			"cssls",
 			"marksman",
-			"tsserver",
+			"ts_ls",
 			"intelephense",
 		}
 

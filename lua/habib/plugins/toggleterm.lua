@@ -6,21 +6,20 @@ return {
 
 		toggleterm.setup({
 			size = 100,
-			open_mapping = [[<c-\>]],
+			open_mapping = [[<c-2>]],
 			shade_filetypes = {},
 			shade_terminal = true,
 			shading_factor = 1,
 			start_in_insert = true,
 			persist_size = true,
---[[       direction = 'vertical' | 'horizontal' | 'tab' | 'float', ]]
-			direction = "float",
+			direction = "vertical",
 			autochdir = true,
 
       float_opts = {
         border = 'curved',
-        width = 100,
+        width = 10,
         height = 20,
-        title_pos = 'right'
+        title_pos = 'bottom'
       },
 		})
 	end,
