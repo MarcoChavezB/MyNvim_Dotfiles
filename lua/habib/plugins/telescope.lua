@@ -24,11 +24,13 @@ return {
           },
           find_command = {
             "rg",
+            "--hidden",
             "--no-heading",
             "--with-filename",
             "--line-number",
             "--column",
             "--smart-case",
+            "database/migrations",
           },
           prompt_prefix = "  ",
           selection_caret = "  ",
@@ -70,6 +72,7 @@ return {
 
       telescope.load_extension("fzf")
 
+
       -- Añadir configuraciones de transparencia
       vim.cmd([[hi TelescopeNormal guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi TelescopeBorder guibg=NONE ctermbg=NONE]])
@@ -79,7 +82,6 @@ return {
       vim.cmd([[hi TelescopeResultsBorder guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi TelescopePreviewNormal guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi TelescopePreviewBorder guibg=NONE ctermbg=NONE]])
-
       _G.find_files_in_current_directory = function()
         local cwd = vim.fn.expand('%:p:h')  
         builtin.find_files({ cwd = cwd })

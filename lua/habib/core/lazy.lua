@@ -21,7 +21,6 @@ lazy.setup({
 	spec = {
 		{ import = "habib.plugins" },
 		{ import = "habib.plugins.lsp" },
-		{ import = "habib.plugins.copilot" },
 	},
 	-- ui config
 	ui = {

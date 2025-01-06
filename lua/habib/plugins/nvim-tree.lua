@@ -7,15 +7,27 @@ return {
 		local nvimtree = require("nvim-tree")
 		nvimtree.setup({
 			auto_reload_on_write = true,
+
 			view = {
-				width = 35,
-				side = "left",
+				float = {
+					enable = true, -- Activa la ventana flotante
+					open_win_config = {
+						relative = "editor", -- Relativo al editor completo
+						border = "rounded",  -- Estilo del borde (opciones: "none", "single", "double", "rounded", "shadow")
+						width = 90,          -- Ancho de la ventana flotante
+						height = 20,         -- Altura de la ventana flotante
+						row = math.floor((vim.o.lines - 50) / 2), -- Centrar verticalmente
+						col = math.floor((vim.o.columns - 90) / 2), -- Centrar horizontalmente
+					},
+				},
+				width = 50, -- Ancho si la ventana flotante está desactivada
 				number = true,
 				relativenumber = true,
 			},
 
 			filters = {
 				dotfiles = true,
+				custom = { "node_modules", ".git" },
 			},
 
 			renderer = {
@@ -29,7 +41,7 @@ return {
 				indent_width = 2,
 
 				indent_markers = {
-					enable = true, -- enables the tree like line
+					enable = true, -- Habilita las líneas del árbol
 					inline_arrows = true,
 					icons = {
 						corner = "└",
@@ -80,7 +92,7 @@ return {
 							ignored = "◌",
 						},
 					},
-				}, -- end of icons rendering
+				}, -- Fin de la configuración de íconos
 
 				special_files = {
 					"Cargo.toml",
@@ -89,7 +101,7 @@ return {
 					"readme.md",
 				},
 				symlink_destination = true,
-			}, -- end of rendering
+			}, -- Fin de la configuración de renderizado
 
 			ui = {
 				confirm = {

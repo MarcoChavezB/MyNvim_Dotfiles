@@ -34,13 +34,15 @@ map("n", "<C-d>", ":NvimTreeClose<cr>", { noremap = true, silent = true }) -- Cl
 -- Telescope
 map(
 	"n",
-	"<C-tab>",
+	"<C-o>",
 	'<cmd>lua require("telescope.builtin").find_files({ cwd = vim.fn.getcwd() })<CR>',
 	{ noremap = true, silent = true }
-) -- Find files
-map("n", "<C-'>", ":Telescope live_grep<cr>", { noremap = true, silent = true }) -- Live grep
-map("n", "<C-¡>", ":Telescope current_buffer_fuzzy_find<cr>", { noremap = true, silent = true }) -- Fuzzy find in buffer
+)
+-- Find files
 map("n", "<C-p>", ":Telescope buffers<CR>", { noremap = true, silent = true }) -- Open buffers list
+map("n", "<C-u>", ":Telescope live_grep<cr>", { noremap = true, silent = true }) -- Live grep
+map("n", "<C-i>", ":Telescope current_buffer_fuzzy_find<cr>", { noremap = true, silent = true }) -- Fuzzy find in buffer
+
 map("n", "<C-S-p>", ":Bonly<CR>", { noremap = true, silent = true }) -- Close all buffers except current
 
 -- Text selection
@@ -73,11 +75,10 @@ map("n", "<C-x>", "dd", { noremap = true, silent = true }) -- Delete current lin
 map("n", "<C-BS>", "db", { noremap = true, silent = true }) -- Delete word before cursor
 
 -- Text selection with Ctrl+Shift+Arrow keys
-map("n", "<C-S-Right>", "ve", { noremap = true, silent = true }) -- Select to end of word
+map("n", "<C-S-Right>", "ve", { noremap = true, silent = true }) -- Select to beginning of word
 map("n", "<C-S-Left>", "vb", { noremap = true, silent = true }) -- Select to beginning of word
 map("n", "<C-S-Up>", "vk", { noremap = true, silent = true }) -- Select previous line
 map("n", "<C-S-Down>", "vj", { noremap = true, silent = true }) -- Select next line
-
 -- Text deletion
 map("v", "<C-x>", '"+d', default_opts) -- Cut to system clipboard
 
@@ -87,7 +88,7 @@ map("v", "<C-c>", '"+y', default_opts) -- Copy to system clipboard
 map("n", "<C-a>", "ggVG", default_opts) -- Select all text
 
 -- Movimientos entre ventanas divididas
-map("n", "<C-w><Right>", "<C-w>l", { noremap = true, silent = true }) -- Mover a la ventana derecha
+map("n", "<C-d>", "<C-w>l", { noremap = true, silent = true }) -- Mover a la ventana derecha
 map("n", "<C-w><Down>", "<C-w>j", { noremap = true, silent = true }) -- Mover a la ventana inferior
 map("n", "<C-w><Left>", "<C-w>h", { noremap = true, silent = true }) -- Mover a la ventana izquierda
 map("n", "<C-d>", "D", default_opts) -- Borrar hasta el final de la linea
@@ -101,23 +102,41 @@ map('n', '<A-v>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, sil
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 map("n", "<A-ESC>", ":noh<CR>", { noremap = true, silent = true })
 
-map('n', '<A-Right>', 'V', { noremap = true, silent = true })
+
+map('n', '<A-i>', 'V', { noremap = true, silent = true })
 
 -- dar tab a el area seleccionada shift + tab
 map('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
 
 -- Move selection to up or down with 'Ctrl - alt - Up' or 'Ctrl - alt - Down'
-map('v', '<A-m>', ":m '>+1<CR>gv=gv", default_opts)
-map('v', '<A-k>', ":m '<-2<CR>gv=gv", default_opts)
-
+map('v', '<A-k>', ":m '>+1<CR>gv=gv", default_opts)
+map('v', '<A-i>', ":m '<-2<CR>gv=gv", default_opts)
 
 -- split window 
-map('n', '<A-CR>', ':vsplit<CR>:wincmd L<CR>', { noremap = true, silent = true })
-
+map('n', '<A-CR>', ':vsplit<CR>', { noremap = true, silent = true })
 
 -- return to last change
 map('n', '<A-º>', '<C-o>', { noremap = true, silent = true })
 
-
 -- Abre el compilador con Ctrl + 1
 vim.api.nvim_set_keymap('n', '<C-1>', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
+
+
+-- Ir al final de la línea
+map("n", "<A-l>", "g_", { noremap = true, silent = true }) -- Ir al final de la línea
+-- Ir al principio de la línea
+map("n", "<A-k>", "0", { noremap = true, silent = true }) -- Ir al principio de la línea
+
+-- Avanzar por palabra hacia atrás
+map("n", "<A-q>", "b", { noremap = true, silent = true }) -- Moverse una palabra hacia atrás
+
+-- Mapea <leader>e para mostrar el diagnóstico en una ventana flotante en la posición actual del cursor
+vim.api.nvim_set_keymap(
+    'n', 
+    '<A-j>', 
+    '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>',
+    { noremap = true, silent = true }
+)
+
+
+

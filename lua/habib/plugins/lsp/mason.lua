@@ -33,6 +33,7 @@ return {
 				"marksman",
 				"ts_ls",
         "angularls",
+        "dartls"
 			},
 			automatic_installation = true,
 		})

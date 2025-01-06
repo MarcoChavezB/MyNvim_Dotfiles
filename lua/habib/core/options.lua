@@ -94,3 +94,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.linebreak = true
 	end,
 })
+
+if vim.fn.has("nvim-0.8") == 1 then
+	vim.opt.cmdheight = 0
+end

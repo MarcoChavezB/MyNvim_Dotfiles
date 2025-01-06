@@ -16,6 +16,36 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+
+    -- Flutter
+    lspconfig.dartls.setup({
+      on_attach = function(client, bufnr)
+        -- Aquí puedes agregar configuraciones adicionales al LSP si es necesario
+      end,
+      capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    })
+
+
+
+   lspconfig.astro.setup({
+      capabilities = capabilities,
+      filetypes = { "astro" },
+      root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+    })
+
+    -- Kotlin Language Server
+    require'lspconfig'.kotlin_language_server.setup{
+      cmd = { "kotlin-language-server" },
+      filetypes = { "kotlin" },
+      root_dir = require'lspconfig'.util.root_pattern("build.gradle", "settings.gradle", ".git"),
+      settings = {
+        kotlin = {
+          compiler = {
+            arguments = { "-Xjsr305=strict" }
+          }
+        }
+      }
+    }
 		-- Auto Formatting
 		--		vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
@@ -32,7 +62,6 @@ return {
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 		})
-
 		-- rust_analyzer
 		lspconfig.rust_analyzer.setup({
 			capabilities = capabilities,
