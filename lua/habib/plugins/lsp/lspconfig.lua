@@ -10,6 +10,16 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
+    lspconfig.intelephense.setup({
+      settings = {
+        intelephense = {
+          environment = {
+            phpVersion = "8.3",
+          },
+        },
+      },
+    })
+
 		local signs = { Error = " ", Warn = "!", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
@@ -105,7 +115,7 @@ return {
 		-- configure emmet language server
 		lspconfig.emmet_ls.setup({
 			capabilities = capabilities,
-			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte", "blade"},
 		})
 
 		-- Lua LS

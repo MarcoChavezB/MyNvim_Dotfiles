@@ -32,6 +32,7 @@ ls.add_snippets("all", {
 })
 
 
+
 -- name: number = 0
 ls.add_snippets("all", {
   s("num", {
