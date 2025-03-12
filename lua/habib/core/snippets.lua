@@ -32,6 +32,38 @@ ls.add_snippets("all", {
 })
 
 
+ls.add_snippets("all", {
+  s("if", {
+    t("if ("),
+    i(1),
+    t(") {"),
+    i(0),
+    t("};"),
+  }),
+})
+
+ls.add_snippets("all", {
+  s("for", {
+    t("for (let i = 0; i < "),
+    i(1),
+    t("; i++) {"),
+    i(0),
+    t("};"),
+  }),
+})
+
+ls.add_snippets("all", {
+  s("fun", {
+    t("function "),
+    i(1),
+    t("("),
+    i(2),
+    t(") {"),
+    i(0),
+    t("};"),
+  }),
+})
+
 -- name: number = 0
 ls.add_snippets("all", {
   s("num", {

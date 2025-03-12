@@ -38,7 +38,22 @@ return {
             t("    );"),
             t("  }"),
             t("}")
+          }),
+
+
+
+        s("resp", {
+            t('return response()->json('),
+            i(1),
+            t(');')
           })
+        })
+
+
+        s("comment", {
+            t({"/*", " * "}),
+            i(1, "Your comment"),
+            t({"", " */"})
         })
 
     end,

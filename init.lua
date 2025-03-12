@@ -2,7 +2,6 @@ require("habib.core")
 
 
 
-
 -- Configuración de null-ls para ejecutar ktlint
 local null_ls = require("null-ls")
 

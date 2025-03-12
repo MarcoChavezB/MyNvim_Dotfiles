@@ -28,6 +28,7 @@ return {
 				"python",
 				"markdown",
         "kotlin"
+        
 			},
 			sync_install = false,
 			auto_install = true,
