@@ -8,7 +8,7 @@ return {
 		nvimtree.setup({
 			auto_reload_on_write = true,
 
-			view = {
+			--[[ view = {
 				float = {
 					enable = true, -- Activa la ventana flotante
 					open_win_config = {
@@ -17,16 +17,16 @@ return {
 						width = 90,          -- Ancho de la ventana flotante
 						height = 20,         -- Altura de la ventana flotante
 						row = math.floor((vim.o.lines - 50) / 2), -- Centrar verticalmente
-						col = math.floor((vim.o.columns - 90) / 2), -- Centrar horizontalmente
+						col = math.floor((vim.o.columns - 90) / 2), -- Centrar horizontalmente 
 					},
 				},
 				width = 50, -- Ancho si la ventana flotante está desactivada
 				number = true,
-				relativenumber = true,
-			},
+				relativenumber = true, 
+			}, ]]
 
 			filters = {
-				dotfiles = true,
+				dotfiles = false,
 				custom = { "node_modules", ".git" },
 			},
 

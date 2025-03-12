@@ -7,6 +7,69 @@ return {
     end,
   }, ]]
 
+
+  {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup({
+        transparent = true,
+        theme = "lotus", -- Opciones: "wave", "dragon", "lotus"
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none", -- Evita fondos en números de línea y signos
+              }
+            }
+          }
+        }
+      })
+
+      -- Aplicar el esquema de colores
+      vim.cmd([[colorscheme kanagawa]])
+
+      -- Ajustes adicionales después de cargar el esquema
+      local highlight_groups = {
+        "Normal", "NonText", "EndOfBuffer", "LineNr",
+        "SignColumn", "VertSplit", "StatusLineNC"
+      }
+
+      for _, group in ipairs(highlight_groups) do
+        vim.cmd("hi " .. group .. " guibg=NONE ctermbg=NONE")
+        vim.cmd [[hi Visual guibg=#101010 guifg=NONE ctermbg=60 ctermfg=NONE]]
+      end
+    end,
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night", -- Opciones: "storm", "moon", "night", "day"
+        transparent = true, -- Habilita fondo transparente
+        terminal_colors = true, -- Aplica colores en el terminal
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = {},
+          variables = {},
+          sidebars = "transparent", -- "dark", "transparent", "normal"
+          floats = "dark", -- "dark", "transparent", "normal"
+        },
+      })
+
+      vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi NonText guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi EndOfBuffer guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi LineNr guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi SignColumn guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi VertSplit guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi StatusLineNC guibg=NONE ctermbg=NONE]])
+      end,
+  },
+
   {
     "sainnhe/gruvbox-material",
     priority = 1000,
@@ -33,7 +96,7 @@ return {
     priority = 1000,
     init = function()
       vim.o.background = "dark" -- opcional: establece el fondo oscuro
-      vim.cmd.colorscheme("lackluster-hack") -- Puedes cambiarlo a "lackluster" o "lackluster-hack"
+--[[       vim.cmd.colorscheme("lackluster-hack") -- Puedes cambiarlo a "lackluster" o "lackluster-hack" ]]
       -- Transparencia de fondo
       vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
       vim.cmd([[hi NonText guibg=NONE ctermbg=NONE]])

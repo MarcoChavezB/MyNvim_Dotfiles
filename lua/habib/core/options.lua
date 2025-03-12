@@ -55,10 +55,9 @@ vim.wo.signcolumn = "yes"
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
 
-vim.o.showtabline = 0
+vim.o.showtabline = 5
 vim.o.laststatus = 0
 vim.opt.swapfile = false
-
 
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
@@ -73,6 +72,12 @@ vim.bo.expandtab = true
 vim.opt.list = false
 vim.opt.listchars:append("eol:󱞣")
 vim.opt.fillchars = { eob = " " }
+
+
+
+
+
+
 
 -- Lualine
 vim.o.laststatus = 3
@@ -98,3 +103,5 @@ vim.api.nvim_create_autocmd("FileType", {
 if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.cmdheight = 0
 end
+
+
