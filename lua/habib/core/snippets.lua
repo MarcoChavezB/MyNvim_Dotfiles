@@ -22,13 +22,12 @@ ls.add_snippets("all", {
   }),
 })
 
-
 ls.add_snippets("all", {
-    s("comment", {
-        t({"/*", " * "}),
-        i(1, "Your comment"),
-        t({"", " */"})
-    }),
+  s("comment", {
+    t({"/**", " * "}),
+    i(1, ""),
+    t({"", " */"}),
+  }),
 })
 
 

@@ -16,15 +16,6 @@ null_ls.setup({
 })
 
 
-
-
-
-
-
-
-
-
-
 -- Crear un comando personalizado para ejecutar ktlint
 vim.api.nvim_create_user_command('Ktlint', function()
   vim.fn.system("ktlint -F " .. vim.fn.expand('%'))

@@ -28,7 +28,7 @@ return {
 			filters = {
 				dotfiles = false,
 				custom = { "node_modules", ".git"},
-        exclude = { ".env" },
+        exclude = { ".env", "*.html" },
 			},
 
 			renderer = {
