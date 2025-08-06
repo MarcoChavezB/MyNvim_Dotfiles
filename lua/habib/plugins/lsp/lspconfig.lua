@@ -81,36 +81,29 @@ return {
 			},
 		})
 
-		-- clangd
-		lspconfig.clangd.setup({
-			capabilities = capabilities,
-			cmd = {
-				"clangd",
-				"--offset-encoding=utf-16",
-			},
-		})
-
 		-- html
 		lspconfig.html.setup({
 			capabilities = capabilities,
 		})
 
-    -- C++ lsp
+
     lspconfig.clangd.setup({
       capabilities = capabilities,
       cmd = {
         "clangd",
-        "--offset-encoding=utf-16",  -- Mantener esta línea
-        "--background-index",        -- Habilita indexación en segundo plano
-        "--clang-tidy",              -- Habilita clang-tidy para diagnósticos adicionales
-        "--completion-style=detailed", -- Ofrece detalles adicionales en autocompletado
-        "--header-insertion=iwyu",   -- Inserción automática de cabeceras (Incluir lo que se usa)
-        "--cross-file-rename",       -- Soporte para renombrar entre archivos
+        "--offset-encoding=utf-16",
+        "--background-index",
+        "--clang-tidy=false",  -- Desactiva tidy si da problemas
+        "--completion-style=detailed",
+        "--header-insertion=never",
+        "--cross-file-rename",
+      },
+      init_options = {
+        clangdFileStatus = true,
       },
       filetypes = { "c", "cpp", "objc", "objcpp" },
       root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
     })
-    vim.cmd([[autocmd BufWritePre *.cpp,*.h lua vim.lsp.buf.format()]])
 
 		-- configure emmet language server
 		lspconfig.emmet_ls.setup({
@@ -130,23 +123,6 @@ return {
 			},
 		})
 
-    -- Angular LS
-    lspconfig.angularls.setup({
-        cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" },
-        on_new_config = function(new_config)
-            new_config.cmd = { "ngserver", "--stdio", "--tsProbeLocations", vim.fn.getcwd() .. "/node_modules", "--ngProbeLocations", vim.fn.getcwd() .. "/node_modules/@angular" }
-        end,
-        filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
-        root_dir = lspconfig.util.root_pattern("angular.json", ".git"),
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-            if client.server_capabilities then
-                client.server_capabilities.document_formatting = false
-            else
-                print("Advertencia: Las capacidades del cliente LSP no están disponibles.")
-            end
-        end,
-    })
 
 		-- CSS LS
 		lspconfig.cssls.setup({

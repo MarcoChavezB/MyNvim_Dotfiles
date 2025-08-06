@@ -12,12 +12,12 @@ return {
 			shading_factor = 1,
 			start_in_insert = true,
 			persist_size = true,
-			direction = "vertical",
+			direction = "float",
 			autochdir = true,
 
       float_opts = {
         border = 'curved',
-        width = 10,
+        width = 100,
         height = 20,
         title_pos = 'bottom'
       },

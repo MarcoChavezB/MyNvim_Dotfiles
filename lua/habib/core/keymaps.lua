@@ -3,7 +3,7 @@
 vim.g.mapleader = " "
 
 -- Alias for setting keymaps
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 
 -- BufferLine navigation
@@ -97,7 +97,7 @@ map("v", "<C-c>", '"+y', default_opts) -- Copy to system clipboard
 map("n", "<C-a>", "ggVG", default_opts) -- Select all text
 
 -- Movimientos entre ventanas divididas
-map("n", "<leader>l", "<C-w>l", { noremap = true, silent = true }) -- Mover a la ventana derecha
+map('n', '<leader>l', '<C-w>l', { noremap = true, silent = true })
 map("n", "<leader>k", "<C-w>j", { noremap = true, silent = true }) -- Mover a la ventana inferior
 map("n", "<leader>j", "<C-w>h", { noremap = true, silent = true }) -- Mover a la ventana izquierda
 map("n", "<leader>i", "<C-w>k", { noremap = true, silent = true }) -- Mover a la ventana izquierda
@@ -125,6 +125,8 @@ map('v', 'J', ":m '<-2<CR>gv=gv", default_opts)
 
 -- split window 
 map('n', '<C-CR>', ':vsplit<CR>', { noremap = true, silent = true })
+-- split window vertical
+map('n', '<C-S-CR>', ':split<CR>', { noremap = true, silent = true })
 
 -- return to last change
 map('n', '<A-º>', '<C-o>', { noremap = true, silent = true })
@@ -155,5 +157,31 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 )
 
+-- Ctrl-n para hacer undo
+vim.keymap.set("n", "<C-n>", "u", { desc = "Undo (antes en 'u')" })
+
+-- Ctrl-m para hacer redo (equivalente a Ctrl-R por defecto)
+vim.keymap.set("n", "<C-m>", "<C-r>", { desc = "Redo (antes en Ctrl-R)" })
+
+-- control de cursor en el movimiento de palabras
+vim.keymap.set("n", "k", "w", { desc = "Saltar a la siguiente palabra" })
+vim.keymap.set("n", "j", "b", { desc = "Saltar a la palabra anterior" })
+
+-- Seleccionar la palabra bajo el cursor
+vim.keymap.set("n", "mv", "viw", { desc = "Seleccionar palabra bajo el cursor" })
+
+-- Mostrar errorflotante con "leader e"
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Mostrar diagnóstico flotante" })
 
 
+vim.keymap.set('n', '<leader>c', ':CopilotChatOpen<CR>', { noremap = true, silent = true })
+
+
+-- DB
+
+vim.api.nvim_set_keymap(
+  "v", -- Modo visual
+  "<leader>r", -- Atajo de teclado (cambiá esto si querés)
+  ":<C-u>lua require('habib.plugins.dadbod').execute_selection()<CR>",
+  { noremap = true, silent = true }
+)

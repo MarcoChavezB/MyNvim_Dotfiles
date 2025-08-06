@@ -16,10 +16,10 @@ return {
       telescope.setup({
         defaults = {
           layout_config = {
-            width = 0.80,
-            prompt_position = "bottom",
+            width = 0.98,
+            prompt_position = "top",
             preview_cutoff = 120,
-            horizontal = { mirror = false },
+            horizontal = { preview_width = 0.6 },
             vertical = { mirror = false },
           },
           find_command = {

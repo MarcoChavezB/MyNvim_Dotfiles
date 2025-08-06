@@ -1,18 +1,39 @@
+-- This file contains the configuration for integrating GitHub Copilot and Copilot Chat plugins in Neovim.
+
+-- Define prompts for Copilot
+-- This table contains various prompts that can be used to interact with Copilot.
+local prompts = {
+  Explain = "Please explain how the following code works.", -- Prompt to explain code
+  Review = "Please review the following code and provide suggestions for improvement.", -- Prompt to review code
+  Tests = "Please explain how the selected code works, then generate unit tests for it.", -- Prompt to generate unit tests
+  Refactor = "Please refactor the following code to improve its clarity and readability.", -- Prompt to refactor code
+  FixCode = "Please fix the following code to make it work as intended.", -- Prompt to fix code
+  FixError = "Please explain the error in the following text and provide a solution.", -- Prompt to fix errors
+  BetterNamings = "Please provide better names for the following variables and functions.", -- Prompt to suggest better names
+  Documentation = "Please provide documentation for the following code.", -- Prompt to generate documentation
+  JsDocs = "Please provide JsDocs for the following code.", -- Prompt to generate JsDocs
+  DocumentationForGithub = "Please provide documentation for the following code ready for GitHub using markdown.", -- Prompt to generate GitHub documentation
+  CreateAPost = "Please provide documentation for the following code to post it in social media, like Linkedin, it has be deep, well explained and easy to understand. Also do it in a fun and engaging way.", -- Prompt to create a social media post
+  SwaggerApiDocs = "Please provide documentation for the following API using Swagger.", -- Prompt to generate Swagger API docs
+  SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.", -- Prompt to generate Swagger JsDocs
+  Summarize = "Please summarize the following text.", -- Prompt to summarize text
+  Spelling = "Please correct any grammar and spelling errors in the following text.", -- Prompt to correct spelling and grammar
+  Wording = "Please improve the grammar and wording of the following text.", -- Prompt to improve wording
+  Concise = "Please rewrite the following text to make it more concise.", -- Prompt to make text concise
+}
+
+-- Plugin configuration
+-- This table contains the configuration for various plugins used in Neovim.
 return {
+
+  -- Copilot Chat plugin configuration
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    "CopilotC-Nvim/CopilotChat.nvim", -- Load the Copilot Chat plugin
     opts = {
-      window = {
-        layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
-        width = 0.3, -- fractional width of parent, or absolute width in columns when > 1
-        title = 'Copilot Chat ksldjfal', -- title of chat window
-      },
+      prompts = prompts,
+      system_prompt = "Este GPT es un clon del usuario, un arquitecto líder frontend especializado en Angular y React, con experiencia en arquitectura limpia, arquitectura hexagonal y separación de lógica en aplicaciones escalables. Tiene un enfoque técnico pero práctico, con explicaciones claras y aplicables, siempre con ejemplos útiles para desarrolladores con conocimientos intermedios y avanzados. Habla con un tono profesional pero cercano, relajado y con un toque de humor inteligente. Evita formalidades excesivas y usa un lenguaje directo, técnico cuando es necesario, pero accesible. Su estilo es argentino, sin caer en clichés, y utiliza expresiones como “buenas acá estamos” o “dale que va” según el contexto. Responde de forma concreta, sin chamuyo ni vueltas, directo al punto, sin repetir lo dicho. Sus principales áreas de conocimiento incluyen: Desarrollo frontend con Angular, React y gestión de estado avanzada (Redux, Signals, State Managers propios como Gentleman State Manager y GPX-Store). Arquitectura de software con enfoque en Clean Architecture, Hexagonal Architecture y Scream Architecture. Implementación de buenas prácticas en TypeScript, testing unitario y end-to-end. Loco por la modularización, atomic design y el patrón contenedor presentacional. Herramientas de productividad como LazyVim, Tmux, Zellij, OBS y Stream Deck. Mentoría y enseñanza de conceptos avanzados de forma clara y efectiva. Liderazgo de comunidades y creación de contenido en YouTube, Twitch y Discord. A la hora de explicar un concepto técnico: 1. Explica brevemente el problema. 2. Da una solución clara y al grano, con ejemplo si aplica. 3. Menciona herramientas o recursos útiles. Si el tema es complejo, usa analogías prácticas (idealmente de arquitectura). Su estilo de comunicación es directo, pragmático y sin rodeos, como quien explica algo urgente mientras se prepara un mate.",
+      model = "gpt-4o",
+      answer_header = "󱗞 Hola Marco!  󱗞  ",
     },
-    -- See Commands section for default commands if you want to lazy load on them
   },
 }
