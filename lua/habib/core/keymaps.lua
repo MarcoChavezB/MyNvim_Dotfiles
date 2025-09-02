@@ -23,8 +23,8 @@ map("n", "kj", "<Esc>", { noremap = true, silent = false }) -- Exit normal mode
 map("v", "kj", "<Esc>", { noremap = true, silent = false }) -- Exit visual mode
 
 -- Wrapping lines
-map("n", "j", "gj", { noremap = true, silent = true }) -- Move down by screen lines
-map("n", "k", "gk", { noremap = true, silent = true }) -- Move up by screen lines
+--map("n", "j", "gj", { noremap = true, silent = true }) -- Move down by screen lines
+--map("n", "k", "gk", { noremap = true, silent = true }) -- Move up by screen lines
 
 -- Unhighlight search
 map("n", "<C-m>", ":nohlsearch<cr>", { noremap = true, silent = true }) -- Clear search highlight
@@ -164,8 +164,8 @@ vim.keymap.set("n", "<C-n>", "u", { desc = "Undo (antes en 'u')" })
 vim.keymap.set("n", "<C-m>", "<C-r>", { desc = "Redo (antes en Ctrl-R)" })
 
 -- control de cursor en el movimiento de palabras
-vim.keymap.set("n", "k", "w", { desc = "Saltar a la siguiente palabra" })
-vim.keymap.set("n", "j", "b", { desc = "Saltar a la palabra anterior" })
+--vim.keymap.set("n", "k", "w", { desc = "Saltar a la siguiente palabra" })
+--vim.keymap.set("n", "j", "b", { desc = "Saltar a la palabra anterior" })
 
 -- Seleccionar la palabra bajo el cursor
 vim.keymap.set("n", "mv", "viw", { desc = "Seleccionar palabra bajo el cursor" })
@@ -185,3 +185,16 @@ vim.api.nvim_set_keymap(
   ":<C-u>lua require('habib.plugins.dadbod').execute_selection()<CR>",
   { noremap = true, silent = true }
 )
+
+
+-- Normal mode
+vim.keymap.set("n", "i", "k", { noremap = true, silent = true }) -- arriba
+vim.keymap.set("n", "j", "h", { noremap = true, silent = true }) -- izquierda
+vim.keymap.set("n", "k", "j", { noremap = true, silent = true }) -- abajo
+vim.keymap.set("n", "l", "l", { noremap = true, silent = true }) -- derecha
+
+-- Visual mode
+vim.keymap.set("v", "i", "k", { noremap = true, silent = true }) -- arriba
+vim.keymap.set("v", "j", "h", { noremap = true, silent = true }) -- izquierda
+vim.keymap.set("v", "k", "j", { noremap = true, silent = true }) -- abajo
+vim.keymap.set("v", "l", "l", { noremap = true, silent = true }) -- derecha
