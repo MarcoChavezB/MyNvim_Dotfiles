@@ -1,3 +1,4 @@
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -17,40 +18,26 @@ if not installed then
 end
 
 lazy.setup({
-  -- importing directories
   spec = {
     { import = "habib.plugins" },
-    { import = "habib.plugins.lsp" },
-    -- Complemento de Catppuccin
+    { import = "habib.plugins.lang" },
+    { import = "habib.plugins.lang/flutter" },
+    { import = "habib.plugins.lang.php" },
     {
       "catppuccin/nvim",
       name = "catppuccin",
       priority = 1000,
       opts = {
-        flavour = "latte", -- Puedes elegir entre "latte", "frappe", "macchiato", "mocha"
-        transparent_background = true, -- Fondo transparente
-        term_colors = true, -- Colores del terminal
+        flavour = "latte",
+        transparent_background = true,
+        term_colors = true,
       },
     },
   },
+  ui = { border = "double", size = { width = 0.8, height = 0.8 } },
+  checker = { enabled = true, notify = false },
+  change_detection = { notify = false },
 
-
-  -- ui config
-  ui = {
-    border = "double",
-    size = {
-      width = 0.8,
-      height = 0.8,
-    },
-  },
-
-  checker = {
-    enabled = true,
-    notify = false,
-  },
-  change_detection = {
-    notify = false,
-  },
+  -- flutter snipets
+  { "rafamadriz/friendly-snippets" },
 })
-
-

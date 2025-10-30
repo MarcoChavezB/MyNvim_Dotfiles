@@ -72,11 +72,11 @@ map("n", "<C-ñ>", ":wincmd w<cr>", { noremap = true, silent = true }) -- Switch
 
 -- Goto-preview
 map(
-	"n",
-	"<C-A-CR>",
-	'<cmd>lua require("goto-preview").goto_preview_definition()<CR>',
-	{ noremap = true, silent = true }
-) -- Preview definition
+  "n",
+  "<leader>pt",
+  '<cmd>lua require("goto-preview").goto_preview_type_definition()<CR>',
+  { noremap = true, silent = true }
+)
 map("n", "<Esc>", '<cmd>lua require("goto-preview").close_all_win()<CR>', { noremap = true, silent = true }) -- Close all previews
 
 -- Delete workspace
@@ -123,10 +123,11 @@ map('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
 map('v', 'M', ":m '>+1<CR>gv=gv", default_opts)
 map('v', 'J', ":m '<-2<CR>gv=gv", default_opts)
 
--- split window 
-map('n', '<C-CR>', ':vsplit<CR>', { noremap = true, silent = true })
--- split window vertical
-map('n', '<C-S-CR>', ':split<CR>', { noremap = true, silent = true })
+-- Split horizontal con space + w + k
+map('n', '<leader>kw', ':split<CR>', { noremap = true, silent = true })
+
+-- Split vertical con space + w + l
+map('n', '<leader>lw', ':vsplit<CR>', { noremap = true, silent = true })
 
 -- return to last change
 map('n', '<A-º>', '<C-o>', { noremap = true, silent = true })

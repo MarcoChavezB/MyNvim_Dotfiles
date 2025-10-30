@@ -9,7 +9,7 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
-      local telescope = require("telescope")
+      local telescope = require("telescope").load_extension("flutter")
       local actions = require("telescope.actions")
       local builtin = require("telescope.builtin")
 
