@@ -27,6 +27,7 @@ return {
 				"python",
 				"markdown",
         "kotlin",
+        "c_sharp",
 			},
 			sync_install = false,
 			auto_install = true,

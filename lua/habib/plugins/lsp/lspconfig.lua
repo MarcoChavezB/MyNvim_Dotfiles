@@ -35,6 +35,15 @@ return {
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
     })
 
+    -- Csharp
+      lspconfig.omnisharp.setup {
+        cmd = { "omnisharp" }, -- mason se encarga de instalarlo
+        enable_editorconfig_support = true,
+        enable_roslyn_analyzers = true,
+        enable_import_completion = true,
+        organize_imports_on_format = true,
+      }
+
 
 
    lspconfig.astro.setup({

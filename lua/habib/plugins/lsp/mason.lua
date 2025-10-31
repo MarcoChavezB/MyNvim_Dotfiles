@@ -28,12 +28,15 @@ return {
 		-- mason-lspconfig
 		mason_lspconfig.setup({
 			ensure_installed = {
+        "csharpier",
+        "netcoredbg",
 				"lua_ls",
 				"cssls",
 				"marksman",
 				"ts_ls",
         "angularls",
-        "dartls"
+        "dartls",
+        "omnisharp"
 			},
 			automatic_installation = true,
 		})
